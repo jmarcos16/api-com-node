@@ -19,6 +19,14 @@ class UserController {
     return res.status(200).json(user);
   }
 
+  async findAll(req, res) {
+    const users = await prisma.user.findMany();
+    if (users) {
+      return res.status(200).send(users);
+    }
+    return res.status(404).send({ error: "Users not found" });
+  }
+
   async createUser(req, res) {
     const { name, email, password } = req.body;
     if (!email) {
@@ -95,6 +103,38 @@ class UserController {
     } catch (error) {
       console.log(error);
       return res
+        .status(500)
+        .send({ error: "The server encountered an error, try later" });
+    }
+  }
+
+  async updateUser(req, res) {
+    const id = req.params;
+    const { email, name, password } = req.body;
+
+    // Verificando se o usuário existe
+    const UserExistVerify = prisma.user.findUnique({ where: id });
+    if (!UserExistVerify) {
+      return res.status(203).send({ error: "User not found" });
+    }
+
+    try {
+      const salt = await bcrypt.genSalt(8);
+      const passwordHash = await bcrypt.hash(password, salt);
+      const updateUser = await prisma.user.update({
+        where: {
+          id: id,
+        },
+        data: {
+          name: "Viola the Magnificent",
+          email: "teste@tese.com",
+          password: "Viola the Magnificent",
+        },
+      });
+      return res.status(201).send({ success: "User successfully updated" });
+    } catch (error) {
+      // console.log(error);
+      res
         .status(500)
         .send({ error: "The server encountered an error, try later" });
     }

@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "name": "José Marcos",
-  "email": "teste@teste.com",
+  "email": "antonio@teste.com",
   "password": "malukdete1"
 }
 
@@ -15,15 +15,28 @@ Content-Type: application/json
 
 {
   "name": "José Marcos",
-  "email": "teste@teste.com",
+  "email": "antonio@teste.com",
   "password": "malukdete1"
 }
 
 ### User FindOne
 
-GET http://localhost:3000/user/2
+GET http://localhost:3000/user/dd8cd676-a176-4cd1-9307-7f6aac9649c2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjU2NTMyNzMxfQ.ksRC6sTazcbB875Tg9adpYDWo-9py5nkSfeqihXHdJM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkOGNkNjc2LWExNzYtNGNkMS05MzA3LTdmNmFhYzk2NDljMiIsImlhdCI6MTY1NjU0MzU4NX0.j2yQ7R7PL9IjRusBkP8UqK_WGJq3g6WlMGFD32uCAN4
 
 
+### Users Find All
 
+GET http://localhost:3000/users
+
+### User update 
+
+PUT http://localhost:3000/user/dd8cd676-a176-4cd1-9307-7f6aac9649c2
+Content-Type: application/json
+
+{
+  "email": "novo@email.com",
+  "nome": "José Marcos",
+  "password": "teste1"
+}
