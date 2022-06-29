@@ -1,0 +1,29 @@
+###Create User
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "name": "José Marcos",
+  "email": "teste@teste.com",
+  "password": "malukdete1"
+}
+
+### User Authentication
+
+POST http://localhost:3000/user/auth
+Content-Type: application/json
+
+{
+  "name": "José Marcos",
+  "email": "teste@teste.com",
+  "password": "malukdete1"
+}
+
+### User FindOne
+
+GET http://localhost:3000/user/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjU2NTMyNzMxfQ.ksRC6sTazcbB875Tg9adpYDWo-9py5nkSfeqihXHdJM
+
+
+
