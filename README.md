@@ -28,3 +28,13 @@ Após seguir esses passos é só rodar um yarn dev par subir a API.
 ```bash
   yarn dev
 ```
+
+
+## Documentações de libs/bibliotecas utilizadas no projeto
+
+ - **[Express - Servidor Web](https://github.com/expressjs/express.git)**
+ - **[Prisma - ORM ](https://github.com/matiassingers/awesome-readme)**
+ - **[Bcrypt - Hash Password ](https://www.npmjs.com/package/bcrypt)**
+ - **[Json Web Token - Generate Token](https://github.com/auth0/node-jsonwebtoken.git)**
+
+
