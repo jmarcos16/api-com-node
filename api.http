@@ -37,6 +37,11 @@ Content-Type: application/json
 
 {
   "email": "novo@email.com",
-  "nome": "José Marcos",
+  "name": "José Marcos",
   "password": "teste1"
 }
+
+
+### Delete user
+
+DELETE http://localhost:3000/user/01

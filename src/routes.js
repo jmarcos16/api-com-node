@@ -8,7 +8,7 @@ router.post("/user", UserController.createUser);
 router.post("/user/auth", UserController.UserAuth);
 router.get("/users", UserController.findAll);
 router.put("/user/:id", UserController.updateUser);
-// router.delete("/user/:id", UserController.deleteUser);
+router.delete("/user/:id", UserController.deleteUser);
 
 // Private Router
 

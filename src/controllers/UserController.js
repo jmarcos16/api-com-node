@@ -15,7 +15,6 @@ class UserController {
     if (!user) {
       return res.status(404).send({ error: "User not found" });
     }
-    console.log(user);
     return res.status(200).json(user);
   }
 
@@ -109,7 +108,7 @@ class UserController {
   }
 
   async updateUser(req, res) {
-    const id = req.params;
+    const { id } = req.params;
     const { email, name, password } = req.body;
 
     // Verificando se o usuário existe
@@ -126,15 +125,26 @@ class UserController {
           id: id,
         },
         data: {
-          name: "Viola the Magnificent",
-          email: "teste@tese.com",
-          password: "Viola the Magnificent",
+          name: name,
+          email: email,
+          password: passwordHash,
         },
       });
       return res.status(201).send({ success: "User successfully updated" });
     } catch (error) {
-      // console.log(error);
       res
+        .status(500)
+        .send({ error: "The server encountered an error, try later" });
+    }
+  }
+
+  async deleteUser(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await prisma.user.delete({ where: { id } });
+      return res.status(200).send({ success: "User successfully deleted" });
+    } catch (error) {
+      return res
         .status(500)
         .send({ error: "The server encountered an error, try later" });
     }
